@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from '../screens/Home.jsx';
 import {
@@ -20,7 +20,7 @@ import {
   Task16,
 } from '../tasks';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
   return (
@@ -37,7 +37,7 @@ export default function AppNavigator() {
       <Stack.Screen
         name='Task09'
         component={Task09}
-        options={() => ({ title: 'Postagens' })}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name='Task10' component={Task10} />
       <Stack.Screen name='Task11' component={Task11} />

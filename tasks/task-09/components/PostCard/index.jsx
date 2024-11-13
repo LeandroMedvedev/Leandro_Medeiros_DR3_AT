@@ -1,29 +1,31 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import { colors } from '../../../../styles/globalStyles';
 
-export default function PostCard({ heading, summary, likes, sharing }) {
+export default function PostCard({ post, onPress }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>{heading}</Text>
-      <Text style={styles.summary}>{summary}</Text>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Text style={styles.title}>{post.title}</Text>
+      <Text style={styles.summary}>{post.summary}</Text>
 
       <View style={styles.interactions}>
-        <Text style={styles.text}>Curtidas: {likes}</Text>
-        <Text style={styles.text}>Compartilhamentos: {sharing}</Text>
+        <Text style={styles.text}>Curtidas: {post.likes}</Text>
+        <Text style={styles.text}>Compartilhamentos: {post.shares}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    gap: 10,
     width: 280,
     padding: 10,
     borderWidth: 1,
-    borderColor: colors.white,
-    backgroundColor: colors.lavenderBlush,
+    borderRadius: 5,
     justifyContent: 'center',
-    gap: 10,
+    elevation: 2,
+    backgroundColor: colors.lavenderBlush,
   },
   interactions: {
     width: '100%',
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  heading: {
+  title: {
     fontSize: 30,
     textIndent: 10,
   },
