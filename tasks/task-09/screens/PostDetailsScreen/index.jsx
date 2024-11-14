@@ -1,4 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+
 import { colors } from '../../../../styles/globalStyles';
 
 export default function PostDetailsScreen({ route }) {

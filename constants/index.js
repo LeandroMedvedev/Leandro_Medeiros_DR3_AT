@@ -92,6 +92,30 @@ export const POSTS = [
   },
 ];
 
+export const PRODUCTS = [
+  {
+    id: '1',
+    name: 'Produto A',
+    imgUrl: 'https://via.placeholder.com/150',
+    description: 'Lorem ipsum dolor sit amet',
+    price: 1999.99,
+  },
+  {
+    id: '2',
+    name: 'Produto B',
+    imgUrl: 'https://via.placeholder.com/150',
+    description: 'Lorem ipsum dolor sit amet',
+    price: 999.99,
+  },
+  {
+    id: '3',
+    name: 'Produto C',
+    imgUrl: 'https://via.placeholder.com/150',
+    description: 'Lorem ipsum dolor sit amet',
+    price: 8999.99,
+  },
+];
+
 /*
   URLs para Imagem
   

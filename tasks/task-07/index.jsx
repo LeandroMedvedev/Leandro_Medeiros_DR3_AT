@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 
 import { DATA } from '../../constants';
-import Item from './components/Item';
+import Item from './components/Item/index.jsx';
 import { colors } from '../../styles/globalStyles';
 
 export default function Task07() {

@@ -1,21 +1,21 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import { PostCard } from '../../components';
-import { POSTS } from '../../../../constants';
 import { colors } from '../../../../styles/globalStyles';
+import { PRODUCTS } from '../../../../constants';
+import { ProductCard } from '../../components';
+import { useCart } from '../../../../contexts';
 
-export default function PostListScreen({ navigation }) {
+export default function ProductList() {
+  const { addToCart } = useCart();
+
   return (
     <View style={styles.container}>
       <FlatList
+        data={PRODUCTS}
         contentContainerStyle={styles.list}
-        data={POSTS}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <PostCard
-            post={item}
-            onPress={() => navigation.navigate('PostDetails', { post: item })}
-          />
+          <ProductCard product={item} onAddToCart={() => addToCart(item)} />
         )}
       />
     </View>
@@ -25,8 +25,7 @@ export default function PostListScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
-    justifyContent: 'center',
+    padding: 10,
     alignItems: 'center',
     backgroundColor: colors.ebony,
   },

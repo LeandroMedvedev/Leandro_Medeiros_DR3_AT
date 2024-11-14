@@ -1,2 +1,2 @@
-export { default as PostListScreen } from './PostListScreen';
-export { default as PostDetailsScreen } from './PostDetailsScreen';
+export { default as PostListScreen } from './PostListScreen/index.jsx';
+export { default as PostDetailsScreen } from './PostDetailsScreen/index.jsx';

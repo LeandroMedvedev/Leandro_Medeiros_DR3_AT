@@ -1,18 +1,31 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { colors, globalStyles } from '../../styles/globalStyles';
+import { Cart, ProductList } from './screens';
+import { CartProvider } from '../../contexts';
+import { CartIcon } from './components';
+
+const Stack = createNativeStackNavigator();
 
 export default function Task10() {
   return (
-    <View style={globalStyles.container}>
-      <Text style={styles.text}>Tarefa 10</Text>
-    </View>
+    <CartProvider>
+      <Stack.Navigator>
+        <Stack.Screen
+          name='ProductList'
+          component={ProductList}
+          options={({ navigation }) => ({
+            title: 'Produtos',
+            headerRight: () => (
+              <CartIcon onPress={() => navigation.navigate('Cart')} />
+            ),
+          })}
+        />
+        <Stack.Screen
+          name='Cart'
+          component={Cart}
+          options={{ title: 'Carrinho' }}
+        />
+      </Stack.Navigator>
+    </CartProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 28,
-    color: colors.white,
-  },
-});
