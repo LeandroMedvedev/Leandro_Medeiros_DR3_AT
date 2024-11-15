@@ -44,7 +44,11 @@ export default function AppNavigator() {
         component={Task10}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name='Task11' component={Task11} />
+      <Stack.Screen
+        name='Task11'
+        component={Task11}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name='Task12' component={Task12} />
       <Stack.Screen name='Task13' component={Task13} />
       <Stack.Screen name='Task14' component={Task14} />
