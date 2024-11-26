@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Teste de Performance 1</Text>
+      <Text style={styles.title}>Teste de Performance 3</Text>
       <Text style={styles.subtitle}>Tarefas</Text>
 
       <FlatList
