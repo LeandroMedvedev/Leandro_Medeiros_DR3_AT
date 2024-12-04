@@ -1,26 +1,24 @@
 import { StyleSheet, Text, View } from 'react-native';
+
 import { colors } from '../../../../styles/globalStyles';
 
-export default function Item({ title }) {
+export default function ListItem({ item }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.text}>{item.name}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: 100,
-    height: 100,
     padding: 15,
-    borderWidth: 1,
-    borderColor: colors.white,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginVertical: 5,
+    backgroundColor: colors.midnightBlue,
+    borderRadius: 5,
   },
-  title: {
-    fontSize: 20,
+  text: {
+    fontSize: 16,
     color: colors.white,
   },
 });

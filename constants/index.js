@@ -17,6 +17,29 @@ export const TASKS = [
   { label: '16', route: 'Task16' },
 ];
 
+export const TO_DO = [
+  { id: '1', name: 'Comprar pão' },
+  { id: '2', name: 'Estudar React Native' },
+  { id: '3', name: 'Praticar exercícios' },
+  { id: '4', name: 'Assistir à aula' },
+  { id: '5', name: 'Passear com cachorro' },
+];
+
+export const CATEGORIZED_LIST = [
+  {
+    title: 'Lista de Exercícios',
+    data: ['Fazer TP1', 'Fazer TP2', 'Fazer TP3'],
+  },
+  {
+    title: 'Lista de Compras',
+    data: ['Comprar Notebook', 'Comprar Tablet', 'Comprar Celular'],
+  },
+  {
+    title: 'Lista de Tarefas',
+    data: ['Passear com cachorro', 'Estudar React Native', 'Pintar casa'],
+  },
+];
+
 const text =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolore quas a quam, rerum quod consequatur autem libero nisi perferendis, omnis, impedit exercitationem voluptas dicta alias quia aliquid iusto veniam.';
 
