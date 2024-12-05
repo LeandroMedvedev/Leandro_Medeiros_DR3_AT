@@ -1,1 +1,1 @@
-export { default as Item } from './Item/index.jsx';
+export { default as ProductCard } from './ProductCard/index.jsx';

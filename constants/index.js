@@ -40,6 +40,90 @@ export const CATEGORIZED_LIST = [
   },
 ];
 
+export const QUESTIONS = [
+  {
+    id: 1,
+    question: 'O que é React?',
+    options: ['Biblioteca', 'Linguagem', 'Framework', 'Sistema'],
+    answer: 'Biblioteca',
+  },
+  {
+    id: 2,
+    question: 'Qual linguagem o React usa?',
+    options: ['JavaScript', 'Python', 'Ruby', 'PHP'],
+    answer: 'JavaScript',
+  },
+  {
+    id: 3,
+    question: 'Qual empresa desenvolveu o React?',
+    options: ['Google', 'Facebook', 'Microsoft', 'Amazon'],
+    answer: 'Facebook',
+  },
+  {
+    id: 4,
+    question: 'O que são componentes em React?',
+    options: ['Funções', 'Blocos reutilizáveis de código', 'APIs', 'Objetos'],
+    answer: 'Blocos reutilizáveis de código',
+  },
+  {
+    id: 5,
+    question: 'O que é o JSX?',
+    options: [
+      'Uma linguagem de programação',
+      'Uma extensão de sintaxe para JavaScript',
+      'Um tipo de função',
+      'Um compilador',
+    ],
+    answer: 'Uma extensão de sintaxe para JavaScript',
+  },
+
+  {
+    id: 6,
+    question: 'O que é React Native?',
+    options: [
+      'Um framework para web',
+      'Um framework para mobile',
+      'Uma biblioteca de JavaScript',
+      'Um servidor',
+    ],
+    answer: 'Um framework para mobile',
+  },
+  {
+    id: 7,
+    question: 'Qual a principal vantagem do React Native?',
+    options: [
+      'Reutilização de código entre plataformas',
+      'Performance superior ao código nativo',
+      'Facilidade com PHP',
+      'Suporte a SQL nativo',
+    ],
+    answer: 'Reutilização de código entre plataformas',
+  },
+  {
+    id: 8,
+    question: 'React Native utiliza qual linguagem para estilização?',
+    options: ['CSS', 'Styled Components', 'JavaScript', 'Inline Styles'],
+    answer: 'JavaScript',
+  },
+  {
+    id: 9,
+    question: 'Como o React Native renderiza componentes?',
+    options: ['HTML', 'DOM Virtual', 'Componentes nativos', 'CSS nativo'],
+    answer: 'Componentes nativos',
+  },
+  {
+    id: 10,
+    question: 'Qual comando é usado para iniciar um novo projeto React Native?',
+    options: [
+      'npx react-native init',
+      'create-react-app',
+      'expo start',
+      'npm start',
+    ],
+    answer: 'npx react-native init',
+  },
+];
+
 const text =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolore quas a quam, rerum quod consequatur autem libero nisi perferendis, omnis, impedit exercitationem voluptas dicta alias quia aliquid iusto veniam.';
 

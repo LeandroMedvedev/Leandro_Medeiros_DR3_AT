@@ -1,1 +1,2 @@
-export { default as Item } from './Item/index.jsx';
+export { default as ProgressBar } from './ProgressBar/index.jsx';
+export { default as Question } from './Question/index.jsx';

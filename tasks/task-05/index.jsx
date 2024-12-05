@@ -1,31 +1,22 @@
-import { FlatList, StyleSheet, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { DATA } from '../../constants';
-import Item from './components/Item/index.jsx';
-import { colors } from '../../styles/globalStyles';
+import { QuizScreen, ResultScreen } from './screens';
+
+const Stack = createStackNavigator();
 
 export default function Task05() {
   return (
-    <View style={styles.container}>
-      <FlatList
-        contentContainerStyle={styles.list}
-        data={DATA}
-        keyExtractor={(item) => item.id}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => <Item title={item.title} />}
+    <Stack.Navigator>
+      <Stack.Screen
+        name='Quiz'
+        component={QuizScreen}
+        options={{ headerShown: false }}
       />
-    </View>
+      <Stack.Screen
+        name='Result'
+        component={ResultScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    alignItems: 'flex-start',
-    backgroundColor: colors.ebony,
-  },
-  list: {
-    gap: 15,
-  },
-});
