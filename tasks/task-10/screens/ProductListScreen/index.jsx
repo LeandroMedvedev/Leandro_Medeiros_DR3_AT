@@ -2,13 +2,13 @@ import {
   ActivityIndicator,
   Button,
   FlatList,
-  Picker,
   StyleSheet,
   TextInput,
   Text,
   View,
 } from 'react-native';
 import { useEffect, useState } from 'react';
+import { Picker } from '@react-native-picker/picker';
 
 import { colors } from '../../../../styles/globalStyles';
 import { ProductCard } from '../../components';
