@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
 
-import ProductListScreen from './screens/ProductListScreen';
+import { ProductListScreen } from './screens';
 import { colors } from '../../styles/globalStyles';
 
 export default function Task07() {

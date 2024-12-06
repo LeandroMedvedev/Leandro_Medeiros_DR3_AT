@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
 import {
-  View,
-  FlatList,
-  StyleSheet,
   ActivityIndicator,
-  TextInput,
   Button,
+  FlatList,
+  Picker,
+  StyleSheet,
+  TextInput,
   Text,
+  View,
 } from 'react-native';
+import { useEffect, useState } from 'react';
 
 import { colors } from '../../../../styles/globalStyles';
 import { ProductCard } from '../../components';
@@ -17,13 +18,16 @@ export default function ProductListScreen() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState('');
+  const [sortOrder, setSortOrder] = useState('');
   const [isFiltering, setIsFiltering] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     async function loadProducts() {
+      setLoading(true);
       const fetchedProducts = await fetchProducts();
       setProducts(fetchedProducts);
+      setFilteredProducts(fetchedProducts);
       setLoading(false);
     }
     loadProducts();
@@ -45,10 +49,30 @@ export default function ProductListScreen() {
     }
   };
 
+  const handleSort = (order) => {
+    setSortOrder(order);
+    const sorted = [...filteredProducts].sort((a, b) => {
+      switch (order) {
+        case 'name-asc':
+          return a.nome.localeCompare(b.nome);
+        case 'name-desc':
+          return b.nome.localeCompare(a.nome);
+        case 'price-asc':
+          return a.preco - b.preco;
+        case 'price-desc':
+          return b.preco - a.preco;
+        default:
+          return 0;
+      }
+    });
+    setFilteredProducts(sorted);
+  };
+
   if (loading) {
     return (
       <View style={styles.loader}>
         <ActivityIndicator size='large' color={colors.ciano} />
+        <Text style={styles.loadingText}>Carregando produtos...</Text>
       </View>
     );
   }
@@ -71,6 +95,26 @@ export default function ProductListScreen() {
           title='Filtrar'
           onPress={handleFilter}
         />
+      </View>
+
+      <View style={styles.sortContainer}>
+        <Text style={styles.sortText}>Ordenar por nome:</Text>
+        <Picker
+          selectedValue={sortOrder}
+          style={styles.picker}
+          onValueChange={(itemValue) => {
+            if (itemValue && itemValue !== 'Selecione uma opção')
+              handleSort(itemValue);
+
+            setSortOrder(itemValue);
+          }}
+        >
+          <Picker.Item label='Selecione uma opção' value={null} />
+          <Picker.Item label='Nome (Crescente)' value='name-asc' />
+          <Picker.Item label='Nome (Decrescente)' value='name-desc' />
+          <Picker.Item label='Preço (Crescente)' value='price-asc' />
+          <Picker.Item label='Preço (Decrescente)' value='price-desc' />
+        </Picker>
       </View>
 
       {filteredProducts.length > 0 ? (
@@ -107,18 +151,36 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: colors.ebony,
     borderBottomWidth: 1,
+    backgroundColor: colors.ebony,
     borderBottomColor: colors.white,
   },
   input: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: '#ccc',
+    maxWidth: 300,
     borderRadius: 5,
     padding: 10,
     marginRight: 10,
     backgroundColor: colors.white,
+  },
+  sortContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    backgroundColor: colors.ebony,
+    borderBottomColor: colors.white,
+  },
+  sortText: {
+    color: colors.white,
+    fontSize: 16,
+  },
+  picker: {
+    padding: 7,
+    maxWidth: 300,
+    marginLeft: 10,
+    borderRadius: 5,
+    flex: 1,
   },
   list: {
     padding: 10,
@@ -129,7 +191,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: colors.ebony,
   },
   emptyMessage: {
     flex: 1,
@@ -139,5 +201,9 @@ const styles = StyleSheet.create({
   emptyText: {
     fontSize: 24,
     color: colors.white,
+  },
+  loadingText: {
+    color: colors.white,
+    fontSize: 24,
   },
 });

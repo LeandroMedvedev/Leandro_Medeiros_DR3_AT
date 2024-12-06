@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import {
-  View,
-  FlatList,
-  StyleSheet,
   ActivityIndicator,
-  TextInput,
   Button,
+  FlatList,
+  Picker,
+  StyleSheet,
+  TextInput,
   Text,
+  View,
 } from 'react-native';
 
 import { colors } from '../../../../styles/globalStyles';
@@ -17,6 +18,7 @@ export default function ProductListScreen() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState('');
+  const [sortOrder, setSortOrder] = useState('');
   const [isFiltering, setIsFiltering] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -24,6 +26,7 @@ export default function ProductListScreen() {
     async function loadProducts() {
       const fetchedProducts = await fetchProducts();
       setProducts(fetchedProducts);
+      setFilteredProducts(fetchedProducts);
       setLoading(false);
     }
     loadProducts();
@@ -43,6 +46,18 @@ export default function ProductListScreen() {
       );
       setFilteredProducts(filtered);
     }
+  };
+
+  const handleSort = (order) => {
+    setSortOrder(order);
+    const sorted = [...filteredProducts].sort((a, b) => {
+      if (order === 'asc') {
+        return a.nome.localeCompare(b.nome);
+      } else if (order === 'desc') {
+        return b.nome.localeCompare(a.nome);
+      }
+    });
+    setFilteredProducts(sorted);
   };
 
   if (loading) {
@@ -71,6 +86,24 @@ export default function ProductListScreen() {
           title='Filtrar'
           onPress={handleFilter}
         />
+      </View>
+
+      <View style={styles.sortContainer}>
+        <Text style={styles.sortText}>Ordenar por nome:</Text>
+        <Picker
+          selectedValue={sortOrder}
+          style={styles.picker}
+          onValueChange={(itemValue) => {
+            if (itemValue && itemValue !== 'Selecione uma opção')
+              handleSort(itemValue);
+
+            setSortOrder(itemValue);
+          }}
+        >
+          <Picker.Item label='Selecione uma opção' value={null} />
+          <Picker.Item label='Crescente (A-Z)' value='asc' />
+          <Picker.Item label='Decrescente (Z-A)' value='desc' />
+        </Picker>
       </View>
 
       {filteredProducts.length > 0 ? (
@@ -107,18 +140,36 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: colors.ebony,
     borderBottomWidth: 1,
+    backgroundColor: colors.ebony,
     borderBottomColor: colors.white,
   },
   input: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: '#ccc',
+    maxWidth: 300,
     borderRadius: 5,
     padding: 10,
     marginRight: 10,
     backgroundColor: colors.white,
+  },
+  sortContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    backgroundColor: colors.ebony,
+    borderBottomColor: colors.white,
+  },
+  sortText: {
+    color: colors.white,
+    fontSize: 16,
+  },
+  picker: {
+    padding: 7,
+    maxWidth: 300,
+    marginLeft: 10,
+    borderRadius: 5,
+    flex: 1,
   },
   list: {
     padding: 10,

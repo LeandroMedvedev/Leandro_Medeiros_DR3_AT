@@ -1,22 +1,19 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
-import { PostDetailsScreen, PostListScreen } from './screens';
-
-const Stack = createNativeStackNavigator();
+import { colors } from '../../styles/globalStyles';
+import { ProductListScreen } from './screens/';
 
 export default function Task09() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name='PostList'
-        component={PostListScreen}
-        options={{ title: 'Postagens' }}
-      />
-      <Stack.Screen
-        name='PostDetails'
-        component={PostDetailsScreen}
-        options={{ title: 'Postagem' }}
-      />
-    </Stack.Navigator>
+    <SafeAreaView style={styles.container}>
+      <ProductListScreen />
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.ebony,
+  },
+});

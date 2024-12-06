@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 
 import { colors } from '../../../../styles/globalStyles';
-import ProductCard from '../../components/ProductCard';
+import { ProductCard } from '../../components';
 import { fetchProducts } from '../../services';
 
 export default function ProductListScreen() {
