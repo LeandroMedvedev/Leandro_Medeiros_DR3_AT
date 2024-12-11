@@ -8,18 +8,18 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 import { colors } from '../styles/globalStyles';
-import { TASKS } from '../constants';
+import { PROJECTS } from '../constants';
 
 export default function Home() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Teste de Performance 3</Text>
-      <Text style={styles.subtitle}>Tarefas</Text>
+      <Text style={styles.title}>Assessment</Text>
+      <Text style={styles.subtitle}>Projetos</Text>
 
       <FlatList
-        data={TASKS}
+        data={PROJECTS}
         contentContainerStyle={styles.list}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
@@ -57,10 +57,11 @@ const styles = StyleSheet.create({
   },
   list: {
     width: '100%',
-    maxWidth: 520,
+    marginTop: 40,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   item: {
     width: 250,

@@ -1,63 +1,33 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { Project01, Project02, Project03 } from '../projects';
 import Home from '../screens/Home.jsx';
-import {
-  Task01,
-  Task02,
-  Task03,
-  Task04,
-  Task05,
-  Task06,
-  Task07,
-  Task08,
-  Task09,
-  Task10,
-  Task11,
-  Task12,
-  Task13,
-  Task14,
-  Task15,
-  Task16,
-} from '../tasks';
 
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Home' component={Home} />
-      <Stack.Screen name='Task01' component={Task01} />
-      <Stack.Screen name='Task02' component={Task02} />
-      <Stack.Screen name='Task03' component={Task03} />
-      <Stack.Screen name='Task04' component={Task04} />
-      <Stack.Screen name='Task05' component={Task05} />
-      <Stack.Screen name='Task06' component={Task06} />
-      <Stack.Screen name='Task07' component={Task07} />
-      <Stack.Screen name='Task08' component={Task08} />
       <Stack.Screen
-        name='Task09'
-        component={Task09}
+        name='Home'
+        component={Home}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name='Task10'
-        component={Task10}
-        options={{ headerShown: false }}
+        name='Project01'
+        component={Project01}
+        options={{ title: 'Projeto 1' }}
       />
       <Stack.Screen
-        name='Task11'
-        component={Task11}
-        options={{ headerShown: false }}
+        name='Project02'
+        component={Project02}
+        options={{ title: 'Projeto 2' }}
       />
       <Stack.Screen
-        name='Task12'
-        component={Task12}
-        options={{ headerShown: false }}
+        name='Project03'
+        component={Project03}
+        options={{ title: 'Projeto 3' }}
       />
-      <Stack.Screen name='Task13' component={Task13} />
-      <Stack.Screen name='Task14' component={Task14} />
-      <Stack.Screen name='Task15' component={Task15} />
-      <Stack.Screen name='Task16' component={Task16} />
     </Stack.Navigator>
   );
 }

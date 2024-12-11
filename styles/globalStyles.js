@@ -28,9 +28,9 @@ export const colors = {
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.ebony,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: colors.ebony,
     gap: 15,
   },
   text: {
