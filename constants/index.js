@@ -4,10 +4,5 @@ export const PROJECTS = [
   { label: '03', route: 'Project03' },
 ];
 
-/*
-  URLs para Imagem
-  
-  https://via.placeholder.com/100?text=Item+A
-  https://source.unsplash.com/random/100x100
-  https://picsum.photos/100
-*/
+export const BASE_URL =
+  'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/';

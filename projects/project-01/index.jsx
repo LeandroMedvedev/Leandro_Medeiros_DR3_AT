@@ -1,17 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { globalStyles } from '../../styles/globalStyles';
+import { TransactionListScreen } from './screens';
+
+const Stack = createStackNavigator();
 
 export default function Project01() {
   return (
-    <View style={globalStyles.container}>
-      <Text>Projeto 01</Text>
-    </View>
+    <Stack.Navigator initialRouteName='Transactions'>
+      <Stack.Screen name='Transactions' component={TransactionListScreen} />
+    </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
