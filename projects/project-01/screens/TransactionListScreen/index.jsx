@@ -8,9 +8,13 @@ export default function TransactionListScreen() {
   const renderItem = ({ item }) => (
     <TransactionItemList
       description={item.description}
+      category={item.category}
       currency={item.currency}
       value={item.value}
       date={item.date}
+      type={item.type}
+      hour={item.hour}
+      key={item.id}
     />
   );
 
