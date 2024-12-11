@@ -1,11 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
+import { TRANSACTIONS } from '../../../../constants/index.js';
 import { colors } from '../../../../styles/globalStyles.js';
+import { TransactionItemList } from '../../components';
 
 export default function TransactionListScreen() {
+  const renderItem = ({ item }) => (
+    <TransactionItemList
+      description={item.description}
+      currency={item.currency}
+      value={item.value}
+      date={item.date}
+    />
+  );
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Transaction List Screen</Text>
+      <FlatList
+        data={TRANSACTIONS}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+      />
     </View>
   );
 }
@@ -13,9 +28,10 @@ export default function TransactionListScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: colors.ebony,
+    padding: 10,
   },
   text: {
     color: colors.white,

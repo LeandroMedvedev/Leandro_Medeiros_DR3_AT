@@ -1,6 +1,6 @@
 import { BASE_URL } from '../../../../constants';
 
-export const getCurrencies = async () => {
+const getCurrencies = async () => {
   try {
     const response = await fetch(`${BASE_URL}Moedas?$top=100&$format=json`);
     const data = await response.json();
@@ -11,3 +11,5 @@ export const getCurrencies = async () => {
     return [];
   }
 };
+
+export default getCurrencies;

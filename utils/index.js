@@ -1,3 +1,3 @@
-export default function formatCurrency(value) {
-  return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+export default function formatCurrency(currency, value) {
+  return value.toLocaleString('pt-BR', { style: 'currency', currency });
 }
