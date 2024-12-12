@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     width: 250,
     padding: 13,
     borderRadius: 4,
-    backgroundColor: colors.githubGreen,
+    backgroundColor: colors.green,
   },
   text: {
     fontWeight: 700,

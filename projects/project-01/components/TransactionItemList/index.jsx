@@ -52,11 +52,10 @@ export default function TransactionItemList({
 
 const styles = StyleSheet.create({
   item: {
+    flex: 1,
     padding: 15,
+    borderRadius: 4,
     marginVertical: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
     backgroundColor: colors.whiteSmoke,
   },
   description: {
@@ -65,8 +64,8 @@ const styles = StyleSheet.create({
   },
   value: {
     fontSize: 14,
-    color: colors.midnightBlue,
     marginVertical: 5,
+    color: colors.midnightBlue,
   },
   date: {
     fontSize: 12,
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   },
   additional: {
     fontSize: 12,
-    color: colors.midnightBlue,
     marginTop: 5,
+    color: colors.midnightBlue,
   },
 });

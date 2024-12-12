@@ -20,9 +20,9 @@ export const colors = {
   shuttleGrey: '#5f6368',
   ebony: '#282c34',
   midnightBlue: '#181a1f',
-  githubGraffiti: '#151b23',
+  graffiti: '#151b23',
   blackRussian: '#03031b',
-  githubGreen: '#3b8640',
+  green: '#3b8640',
 };
 
 export const globalStyles = StyleSheet.create({

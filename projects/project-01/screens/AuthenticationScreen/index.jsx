@@ -9,6 +9,7 @@ export default function AuthenticationScreen({ navigation }) {
       <Text style={styles.title}>Bem-Vindo</Text>
       <TextInput style={styles.input} placeholder='Nome de usuário' />
       <TextInput style={styles.input} placeholder='Senha' secureTextEntry />
+
       <Button
         title='ENTRAR'
         navigation={navigation}
@@ -20,6 +21,7 @@ export default function AuthenticationScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    gap: 16,
     flex: 1,
     padding: 16,
     alignItems: 'center',
@@ -38,7 +40,6 @@ const styles = StyleSheet.create({
     padding: 12,
     borderWidth: 1,
     borderRadius: 4,
-    marginVertical: 8,
     backgroundColor: colors.white,
   },
 });

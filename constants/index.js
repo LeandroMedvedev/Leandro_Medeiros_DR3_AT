@@ -11,7 +11,7 @@ export const TRANSACTIONS = [
   {
     id: '1',
     description: 'Compra no mercado',
-    value: 150.0,
+    value: 5000.0,
     date: '2024-01-01',
     hour: '14:30',
     category: 'Alimentação',
@@ -21,7 +21,7 @@ export const TRANSACTIONS = [
   {
     id: '2',
     description: 'Salário',
-    value: 5000.0,
+    value: 150.0,
     date: '2024-01-05',
     hour: '09:00',
     category: 'Receita',

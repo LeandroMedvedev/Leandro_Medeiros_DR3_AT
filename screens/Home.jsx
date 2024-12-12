@@ -13,6 +13,15 @@ import { PROJECTS } from '../constants';
 export default function Home() {
   const navigation = useNavigation();
 
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      style={styles.item}
+      onPress={() => navigation.navigate(item.route)}
+    >
+      <Text style={styles.link}>{item.label}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Assessment</Text>
@@ -22,14 +31,7 @@ export default function Home() {
         data={PROJECTS}
         contentContainerStyle={styles.list}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() => navigation.navigate(item.route)}
-          >
-            <Text style={styles.link}>{item.label}</Text>
-          </TouchableOpacity>
-        )}
+        renderItem={renderItem}
       />
     </View>
   );
@@ -45,23 +47,23 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 10,
+    fontWeight: 'bold',
     color: colors.white,
   },
   subtitle: {
     fontSize: 20,
-    fontWeight: 'bold',
     marginBottom: 10,
+    fontWeight: 'bold',
     color: colors.white,
   },
   list: {
     width: '100%',
     marginTop: 40,
-    flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   item: {
     width: 250,
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   link: {
     fontSize: 16,
     fontWeight: '700',
-    color: colors.white,
     textAlign: 'center',
+    color: colors.white,
   },
 });
