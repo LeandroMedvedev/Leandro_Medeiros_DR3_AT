@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
 import { Dimensions, Text, View } from 'react-native';
 
 import { colors } from '../../../../styles/globalStyles';

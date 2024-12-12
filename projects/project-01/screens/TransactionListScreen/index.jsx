@@ -1,10 +1,10 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 
+import { Button, TransactionItemList } from '../../components';
 import { TRANSACTIONS } from '../../../../constants/index.js';
 import { colors } from '../../../../styles/globalStyles.js';
-import { TransactionItemList } from '../../components';
 
-export default function TransactionListScreen() {
+export default function TransactionListScreen({ navigation }) {
   const renderItem = ({ item }) => (
     <TransactionItemList
       description={item.description}
@@ -20,6 +20,11 @@ export default function TransactionListScreen() {
 
   return (
     <View style={styles.container}>
+      <Button
+        navigation={navigation}
+        navText='TransactionForm'
+        title='ADICIONAR'
+      />
       <FlatList
         data={TRANSACTIONS}
         keyExtractor={(item) => item.id}
@@ -32,10 +37,10 @@ export default function TransactionListScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.ebony,
-    padding: 10,
   },
   text: {
     color: colors.white,
