@@ -1,25 +1,18 @@
 import { useState } from 'react';
 import { Picker } from '@react-native-picker/picker';
-import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 
 import { Button, TransactionItemList } from '../../components';
-import { TRANSACTIONS } from '../../../../constants/index.js';
 import { colors } from '../../../../styles/globalStyles.js';
+import { useTransaction } from '../../contexts/index.jsx';
+import { filteredTransactions } from '../../../../utils';
 
 export default function TransactionListScreen({ navigation }) {
+  const { transactions: TRANSACTIONS } = useTransaction();
+
   const [sortProperty, setSortProperty] = useState('date');
   const [searchText, setSearchText] = useState('');
   const [transactions, _] = useState(TRANSACTIONS);
-
-  const filteredTransactions = transactions
-    .filter((transaction) =>
-      transaction.description.toLowerCase().includes(searchText.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (sortProperty === 'value') return b.value - a.value;
-
-      return new Date(b.date) - new Date(a.date);
-    });
 
   const renderItem = ({ item }) => (
     <TransactionItemList
@@ -29,7 +22,7 @@ export default function TransactionListScreen({ navigation }) {
       value={item.value}
       date={item.date}
       type={item.type}
-      hour={item.hour}
+      time={item.time}
       key={item.id}
     />
   );
@@ -53,13 +46,12 @@ export default function TransactionListScreen({ navigation }) {
       </Picker>
 
       <Button
-        navigation={navigation}
-        navText='TransactionForm'
+        onPress={() => navigation.navigate('TransactionForm')}
         title='ADICIONAR'
       />
 
       <FlatList
-        data={filteredTransactions}
+        data={filteredTransactions(searchText, sortProperty, transactions)}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
       />

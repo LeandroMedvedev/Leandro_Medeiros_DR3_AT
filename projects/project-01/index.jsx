@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { TransactionProvider } from './contexts';
 import {
   AuthenticationScreen,
   TransactionFormScreen,
@@ -10,22 +11,24 @@ const Stack = createStackNavigator();
 
 export default function Project01() {
   return (
-    <Stack.Navigator initialRouteName='Authentication'>
-      <Stack.Screen
-        name='Authentication'
-        component={AuthenticationScreen}
-        options={{ title: 'Login' }}
-      />
-      <Stack.Screen
-        name='TransactionList'
-        component={TransactionListScreen}
-        options={{ title: 'Transações Financeiras' }}
-      />
-      <Stack.Screen
-        name='TransactionForm'
-        component={TransactionFormScreen}
-        options={{ title: 'Inserir Transação' }}
-      />
-    </Stack.Navigator>
+    <TransactionProvider>
+      <Stack.Navigator initialRouteName='Authentication'>
+        <Stack.Screen
+          name='Authentication'
+          component={AuthenticationScreen}
+          options={{ title: 'Login' }}
+        />
+        <Stack.Screen
+          name='TransactionList'
+          component={TransactionListScreen}
+          options={{ title: 'Transações Financeiras' }}
+        />
+        <Stack.Screen
+          name='TransactionForm'
+          component={TransactionFormScreen}
+          options={{ title: 'Inserir Transação' }}
+        />
+      </Stack.Navigator>
+    </TransactionProvider>
   );
 }

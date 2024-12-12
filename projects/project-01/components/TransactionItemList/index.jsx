@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import { Dimensions, Text, View } from 'react-native';
 
 import { colors } from '../../../../styles/globalStyles';
-import formatCurrency from '../../../../utils';
+import { formatCurrency } from '../../../../utils';
 
 export default function TransactionItemList({
   category,
   currency,
   date,
   description,
-  hour,
+  time,
   type,
   value,
 }) {
@@ -40,7 +40,7 @@ export default function TransactionItemList({
 
       {!isPortrait && (
         <>
-          <Text style={styles.additional}>Hora: {hour}</Text>
+          <Text style={styles.additional}>Hora: {time}</Text>
           <Text style={styles.additional}>Categoria: {category}</Text>
           <Text style={styles.additional}>Tipo: {type}</Text>
           <Text style={styles.additional}>Moeda: {currency}</Text>

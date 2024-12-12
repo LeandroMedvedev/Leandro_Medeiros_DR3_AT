@@ -2,11 +2,15 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { colors } from '../../../../styles/globalStyles';
 
-export default function Button({ navigation, navText, title }) {
+export default function Button({ disabled, onPress, title }) {
   return (
     <TouchableOpacity
-      style={styles.button}
-      onPress={() => navigation.navigate(navText)}
+      style={[
+        styles.button,
+        disabled ? styles.buttonDisabled : styles.buttonEnabled,
+      ]}
+      disabled={disabled}
+      onPress={onPress}
     >
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
@@ -18,6 +22,11 @@ const styles = StyleSheet.create({
     width: 250,
     padding: 13,
     borderRadius: 4,
+  },
+  buttonDisabled: {
+    backgroundColor: colors.lightGrey,
+  },
+  buttonEnabled: {
     backgroundColor: colors.green,
   },
   text: {

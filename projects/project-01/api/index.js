@@ -1,1 +1,1 @@
-export { default as getCurrencies } from './currencyApi/index.js';
+export { default as ExchangeService } from './exchangeService/index.js';

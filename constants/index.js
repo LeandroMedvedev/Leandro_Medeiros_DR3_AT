@@ -9,21 +9,21 @@ export const PROJECTS = [
 
 export const TRANSACTIONS = [
   {
-    id: '1',
+    id: 'c6522b83-f7dc-4533-bbec-76efc80429b9',
     description: 'Compra no mercado',
     value: 5000.0,
     date: '2024-01-01',
-    hour: '14:30',
+    time: '14:30',
     category: 'Alimentação',
     type: 'Despesa',
     currency: 'BRL',
   },
   {
-    id: '2',
+    id: '17520ece-5655-4445-988b-02c28df5ff89',
     description: 'Salário',
     value: 150.0,
-    date: '2024-01-05',
-    hour: '09:00',
+    date: '2024-02-19',
+    time: '09:00',
     category: 'Receita',
     type: 'Receita',
     currency: 'USD',
