@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Swipeable } from 'react-native-gesture-handler';
 import { Dimensions, Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { useTransaction } from '../../contexts/index.jsx';
 import { colors } from '../../../../styles/globalStyles';
 import { formatCurrency } from '../../../../utils';
-import { useTransaction } from '../../contexts';
 
 export default function TransactionItemList({
   description,

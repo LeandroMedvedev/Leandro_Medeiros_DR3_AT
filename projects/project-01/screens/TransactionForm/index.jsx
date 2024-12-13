@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { Picker } from '@react-native-picker/picker';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { useTransaction } from '../../contexts/index.jsx';
 import { colors } from '../../../../styles/globalStyles';
-import { useTransaction } from '../../contexts';
 import { ExchangeService } from '../../api';
 import { Button } from '../../components';
 

@@ -3,8 +3,8 @@ import { Picker } from '@react-native-picker/picker';
 import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 
 import { Button, TransactionItemList } from '../../components';
-import { colors } from '../../../../styles/globalStyles.js';
 import { useTransaction } from '../../contexts/index.jsx';
+import { colors } from '../../../../styles/globalStyles';
 import { filteredTransactions } from '../../../../utils';
 
 export default function TransactionListScreen({ navigation }) {
