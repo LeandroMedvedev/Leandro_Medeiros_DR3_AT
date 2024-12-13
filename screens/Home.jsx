@@ -8,7 +8,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 import { colors } from '../styles/globalStyles';
-import { PROJECTS } from '../constants';
+import { PROJECTS } from '../constants/index.js';
 
 export default function Home() {
   const navigation = useNavigation();

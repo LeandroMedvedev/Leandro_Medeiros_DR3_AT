@@ -1,3 +1,4 @@
-export { default as TransactionListScreen } from './TransactionListScreen/index.jsx';
-export { default as TransactionFormScreen } from './TransactionFormScreen/index.jsx';
-export { default as AuthenticationScreen } from './AuthenticationScreen/index.jsx';
+export { default as EditTransactionScreen } from './EditTransaction/index.jsx';
+export { default as TransactionListScreen } from './TransactionList/index.jsx';
+export { default as TransactionFormScreen } from './TransactionForm/index.jsx';
+export { default as AuthenticationScreen } from './Authentication/index.jsx';

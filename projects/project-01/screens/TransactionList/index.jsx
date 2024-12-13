@@ -8,22 +8,23 @@ import { useTransaction } from '../../contexts/index.jsx';
 import { filteredTransactions } from '../../../../utils';
 
 export default function TransactionListScreen({ navigation }) {
-  const { transactions: TRANSACTIONS } = useTransaction();
+  const { transactions } = useTransaction();
 
   const [sortProperty, setSortProperty] = useState('date');
   const [searchText, setSearchText] = useState('');
-  const [transactions, _] = useState(TRANSACTIONS);
 
   const renderItem = ({ item }) => (
     <TransactionItemList
       description={item.description}
       category={item.category}
       currency={item.currency}
+      navigation={navigation}
       value={item.value}
       date={item.date}
       type={item.type}
       time={item.time}
       key={item.id}
+      id={item.id}
     />
   );
 
@@ -61,7 +62,7 @@ export default function TransactionListScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    gap: 16,
+    gap: 10,
     flex: 1,
     padding: 10,
     alignItems: 'center',
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
   picker: {
     width: 250,
     height: 45,
+    padding: 12,
     borderRadius: 4,
   },
   noTransaction: {

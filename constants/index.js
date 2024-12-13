@@ -1,3 +1,6 @@
+export const AVATAR_URL =
+  'https://api.dicebear.com/6.x/bottts/svg?seed=User111';
+
 export const BASE_URL =
   'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/';
 

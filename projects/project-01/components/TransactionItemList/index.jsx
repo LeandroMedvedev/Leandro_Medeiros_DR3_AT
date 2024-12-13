@@ -1,20 +1,55 @@
-import { StyleSheet } from 'react-native';
 import { useEffect, useState } from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import { Swipeable } from 'react-native-gesture-handler';
+import { Dimensions, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { colors } from '../../../../styles/globalStyles';
 import { formatCurrency } from '../../../../utils';
+import { useTransaction } from '../../contexts';
 
 export default function TransactionItemList({
+  description,
+  navigation,
   category,
   currency,
+  value,
   date,
-  description,
   time,
   type,
-  value,
+  id,
 }) {
   const [isPortrait, setIsPortrait] = useState(true);
+  const { deleteTransaction } = useTransaction();
+
+  const handleEdit = () => {
+    navigation.navigate('EditTransaction', {
+      transaction: {
+        id,
+        description,
+        category,
+        currency,
+        value,
+        date,
+        time,
+        type,
+      },
+    });
+  };
+
+  const handleDelete = () => {
+    deleteTransaction(id);
+  };
+
+  const renderLeftActions = () => (
+    <Pressable style={[styles.action, styles.edit]} onPress={handleEdit}>
+      <Text style={styles.actionText}>Editar</Text>
+    </Pressable>
+  );
+
+  const renderRightActions = () => (
+    <Pressable style={[styles.action, styles.delete]} onPress={handleDelete}>
+      <Text style={styles.actionText}>Excluir</Text>
+    </Pressable>
+  );
 
   const detectOrientation = () => {
     const { height, width } = Dimensions.get('window');
@@ -33,20 +68,26 @@ export default function TransactionItemList({
   }, []);
 
   return (
-    <View style={styles.item}>
-      <Text style={styles.description}>{description}</Text>
-      <Text style={styles.value}>Valor: {formatCurrency(currency, value)}</Text>
-      <Text style={styles.date}>Data: {date}</Text>
-
-      {!isPortrait && (
-        <>
-          <Text style={styles.additional}>Hora: {time}</Text>
-          <Text style={styles.additional}>Categoria: {category}</Text>
-          <Text style={styles.additional}>Tipo: {type}</Text>
-          <Text style={styles.additional}>Moeda: {currency}</Text>
-        </>
-      )}
-    </View>
+    <Swipeable
+      renderLeftActions={renderLeftActions}
+      renderRightActions={renderRightActions}
+    >
+      <View style={styles.item}>
+        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.value}>
+          Valor: {formatCurrency(currency, value)}
+        </Text>
+        <Text style={styles.date}>Data: {date}</Text>
+        {!isPortrait && (
+          <>
+            <Text style={styles.additional}>Hora: {time}</Text>
+            <Text style={styles.additional}>Categoria: {category}</Text>
+            <Text style={styles.additional}>Tipo: {type}</Text>
+            <Text style={styles.additional}>Moeda: {currency}</Text>
+          </>
+        )}
+      </View>
+    </Swipeable>
   );
 }
 
@@ -75,5 +116,21 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 5,
     color: colors.midnightBlue,
+  },
+  action: {
+    width: 80,
+    height: '90%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  edit: {
+    backgroundColor: colors.ciano,
+  },
+  delete: {
+    backgroundColor: colors.darkRed,
+  },
+  actionText: {
+    color: colors.white,
+    fontWeight: 'bold',
   },
 });

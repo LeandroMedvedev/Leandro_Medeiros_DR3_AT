@@ -49,7 +49,7 @@ export default function TransactionFormScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Nova Transação</Text>
+      <Text style={styles.title}>Adicionar Transação</Text>
 
       <TextInput
         style={styles.input}
@@ -109,21 +109,19 @@ export default function TransactionFormScreen({ navigation }) {
       </Picker>
 
       <Button
-        title='ENVIAR'
+        title='SALVAR'
         onPress={handleSubmit}
         disabled={!description || !value || !time || !date || !category}
       />
-
-      <Button title='TRANSAÇÕES' onPress={() => navigation.goBack()} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    gap: 16,
+    gap: 10,
     flex: 1,
-    padding: 16,
+    padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.ebony,

@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TransactionProvider } from './contexts';
 import {
   AuthenticationScreen,
+  EditTransactionScreen,
   TransactionFormScreen,
   TransactionListScreen,
 } from './screens';
@@ -16,7 +17,7 @@ export default function Project01() {
         <Stack.Screen
           name='Authentication'
           component={AuthenticationScreen}
-          options={{ title: 'Login' }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name='TransactionList'
@@ -26,7 +27,12 @@ export default function Project01() {
         <Stack.Screen
           name='TransactionForm'
           component={TransactionFormScreen}
-          options={{ title: 'Inserir Transação' }}
+          options={{ title: 'Transação' }}
+        />
+        <Stack.Screen
+          name='EditTransaction'
+          component={EditTransactionScreen}
+          options={{ title: 'Transação' }}
         />
       </Stack.Navigator>
     </TransactionProvider>
