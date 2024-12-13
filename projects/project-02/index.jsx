@@ -1,17 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { globalStyles } from '../../styles/globalStyles';
+import { GalleryScreen, ImageDetailsScreen } from './screens';
+
+const Stack = createStackNavigator();
 
 export default function Project02() {
   return (
-    <View style={globalStyles.container}>
-      <Text>Projeto 02</Text>
-    </View>
+    <Stack.Navigator initialRouteName='Gallery'>
+      <Stack.Screen
+        name='Gallery'
+        component={GalleryScreen}
+        options={{ options: 'Galeria' }}
+      />
+      <Stack.Screen
+        name='ImageDetails'
+        component={ImageDetailsScreen}
+        options={{ title: 'Imagem' }}
+      />
+    </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
