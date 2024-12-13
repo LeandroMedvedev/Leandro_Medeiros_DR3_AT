@@ -21,7 +21,7 @@ export default function AppNavigator() {
       <Stack.Screen
         name='Project02'
         component={Project02}
-        options={{ title: 'Projeto 2' }}
+        options={{ headerShown: false, title: 'Projeto 2' }}
       />
       <Stack.Screen
         name='Project03'
