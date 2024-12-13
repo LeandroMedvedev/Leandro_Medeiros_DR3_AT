@@ -1,12 +1,18 @@
 import { View, Image, Text, StyleSheet } from 'react-native';
 
 import { colors } from '../../../../styles/globalStyles';
+import { truncateText } from '../../../../utils';
 
-export default function ImageCard({ title, imageUrl }) {
+export default function ImageCard({ description, title, imageUrl }) {
   return (
     <View style={styles.card}>
-      <Image source={{ uri: imageUrl }} style={styles.image} />
+      {imageUrl ? (
+        <Image source={{ uri: imageUrl }} style={styles.image} />
+      ) : (
+        <Text style={styles.noImage}>Imagem não disponível</Text>
+      )}
       <Text style={styles.title}>{title}</Text>
+      <Text style={styles.description}>{truncateText(description, 50)}</Text>
     </View>
   );
 }
@@ -14,18 +20,28 @@ export default function ImageCard({ title, imageUrl }) {
 const styles = StyleSheet.create({
   card: {
     margin: 10,
-    borderRadius: 8,
+    borderRadius: 4,
     overflow: 'hidden',
     color: colors.white,
     backgroundColor: colors.ebony,
   },
   image: {
-    width: '100%',
     height: 200,
+    width: '100%',
+  },
+  noImage: {
+    padding: 20,
+    textAlign: 'center',
+    color: colors.white,
   },
   title: {
     padding: 10,
     fontSize: 16,
     fontWeight: 'bold',
+    color: colors.white,
+  },
+  description: {
+    color: colors.white,
+    textAlign: 'center',
   },
 });

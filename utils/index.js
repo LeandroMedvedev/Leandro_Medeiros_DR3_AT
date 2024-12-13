@@ -13,3 +13,7 @@ export function filteredTransactions(searchText, sortProperty, transactions) {
       return new Date(b.date) - new Date(a.date);
     });
 }
+
+export function truncateText(text, limit) {
+  return text.length > limit ? `${text.substring(0, limit)}...` : text;
+}
