@@ -1,29 +1,31 @@
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { colors } from '../../../../styles/globalStyles';
 import { truncateText } from '../../../../utils';
 
-export default function ImageCard({ description, title, imageUrl }) {
+export default function ImageCard({ description, imageUrl, onPress, title }) {
   return (
-    <View style={styles.card}>
-      {imageUrl ? (
-        <Image source={{ uri: imageUrl }} style={styles.image} />
-      ) : (
-        <Text style={styles.noImage}>Imagem não disponível</Text>
-      )}
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.description}>{truncateText(description, 50)}</Text>
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.card}>
+        {imageUrl ? (
+          <Image source={{ uri: imageUrl }} style={styles.image} />
+        ) : (
+          <Text style={styles.noImage}>Imagem não disponível</Text>
+        )}
+        <Text style={styles.title}>{title}</Text>
+
+        <Text style={styles.description}>{truncateText(description, 50)}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    // flex: 1,
+    flex: 1,
     margin: 10,
     borderRadius: 4,
     overflow: 'hidden',
-    color: colors.white,
     backgroundColor: colors.ebony,
   },
   image: {

@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { TransactionProvider } from './contexts';
+import { TransactionProvider } from './contexts/index.jsx';
 import {
   AuthenticationScreen,
   EditTransactionScreen,
