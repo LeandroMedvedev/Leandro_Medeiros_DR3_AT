@@ -1,5 +1,3 @@
-import { Bar } from 'react-native-progress';
-import { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,15 +7,21 @@ import {
   RefreshControl,
   ActivityIndicator,
 } from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
+import { useState, useEffect } from 'react';
+import { Bar } from 'react-native-progress';
+import { useNavigation } from '@react-navigation/native';
 
 import { colors } from '../../../../styles/globalStyles.js';
 import { fetchImagesByAstro } from '../../api';
 import { ImageCard } from '../../components';
 
 export default function GalleryScreen() {
+  const navigation = useNavigation();
+
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
-  const [astro, setAstro] = useState('pluto');
+  const [astro, setAstro] = useState('earth');
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
@@ -78,11 +82,17 @@ export default function GalleryScreen() {
     setRefreshing(false);
   };
 
+  const handleImagePress = (image) => {
+    navigation.navigate('ImageDetails', { image });
+  };
+
   const renderItem = ({ item }) => (
     <ImageCard
+      author={item.secondary_creator}
       description={item.description}
       imageUrl={item.imageUrl}
       title={item.title}
+      onPress={() => handleImagePress(item)}
     />
   );
 
@@ -109,8 +119,8 @@ export default function GalleryScreen() {
       ) : (
         <FlatList
           data={images}
-          keyExtractor={(item) => item.id}
           renderItem={renderItem}
+          keyExtractor={() => uuidv4()}
           onEndReached={handleLoadMore}
           onEndReachedThreshold={0.5}
           refreshControl={
@@ -125,10 +135,9 @@ export default function GalleryScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    overflow: 'scroll',
-    // height: 800,
     gap: 10,
     padding: 10,
+    overflow: 'scroll',
     alignItems: 'center',
     justifyContent: 'center',
     color: colors.white,

@@ -10,7 +10,7 @@ export default function Project02() {
       <Stack.Screen
         name='Gallery'
         component={GalleryScreen}
-        options={{ options: 'Galeria' }}
+        options={{ title: 'Galeria' }}
       />
       <Stack.Screen
         name='ImageDetails'
