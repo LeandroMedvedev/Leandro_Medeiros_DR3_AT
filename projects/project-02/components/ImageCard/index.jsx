@@ -19,6 +19,7 @@ export default function ImageCard({ description, title, imageUrl }) {
 
 const styles = StyleSheet.create({
   card: {
+    // flex: 1,
     margin: 10,
     borderRadius: 4,
     overflow: 'hidden',
