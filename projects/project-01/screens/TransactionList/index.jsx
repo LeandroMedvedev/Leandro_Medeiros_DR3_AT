@@ -14,18 +14,20 @@ export default function TransactionListScreen({ navigation }) {
   const [searchText, setSearchText] = useState('');
 
   const renderItem = ({ item }) => (
-    <TransactionItemList
-      description={item.description}
-      category={item.category}
-      currency={item.currency}
-      navigation={navigation}
-      value={item.value}
-      date={item.date}
-      type={item.type}
-      time={item.time}
-      key={item.id}
-      id={item.id}
-    />
+    <>
+      <TransactionItemList
+        description={item.description}
+        category={item.category}
+        currency={item.currency}
+        navigation={navigation}
+        value={item.value}
+        date={item.date}
+        type={item.type}
+        time={item.time}
+        key={item.id}
+        id={item.id}
+      />
+    </>
   );
 
   return (

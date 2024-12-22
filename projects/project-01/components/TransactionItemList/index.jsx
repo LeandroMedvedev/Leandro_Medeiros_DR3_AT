@@ -23,7 +23,6 @@ export default function TransactionItemList({
   const handleEdit = () => {
     navigation.navigate('EditTransaction', {
       transaction: {
-        id,
         description,
         category,
         currency,
@@ -31,6 +30,7 @@ export default function TransactionItemList({
         date,
         time,
         type,
+        id,
       },
     });
   };
@@ -77,10 +77,18 @@ export default function TransactionItemList({
         <Text style={styles.value}>
           Valor: {formatCurrency(currency, value)}
         </Text>
-        <Text style={styles.date}>Data: {date}</Text>
+        <Text style={styles.date}>
+          Data: {date.toLocaleDateString('pt-BR')}
+        </Text>
         {!isPortrait && (
           <>
-            <Text style={styles.additional}>Hora: {time}</Text>
+            <Text style={styles.additional}>
+              Hora:{' '}
+              {time.toLocaleTimeString('pt-BR', {
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
+            </Text>
             <Text style={styles.additional}>Categoria: {category}</Text>
             <Text style={styles.additional}>Tipo: {type}</Text>
             <Text style={styles.additional}>Moeda: {currency}</Text>
@@ -130,7 +138,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkRed,
   },
   actionText: {
-    color: colors.white,
     fontWeight: 'bold',
+    color: colors.white,
   },
 });

@@ -1,6 +1,13 @@
+import {
+  Text,
+  TextInput,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import { useEffect, useState } from 'react';
 import { Picker } from '@react-native-picker/picker';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import { useTransaction } from '../../contexts/index.jsx';
 import { colors } from '../../../../styles/globalStyles';
@@ -15,12 +22,18 @@ export default function EditTransactionScreen({ route, navigation }) {
     transaction?.description || ''
   );
   const [value, setValue] = useState(transaction?.value || '');
-  const [date, setDate] = useState(transaction?.date || '');
-  const [time, setTime] = useState(transaction?.time || '');
+  const [date, setDate] = useState(
+    transaction?.date ? transaction.date : new Date()
+  );
+  const [time, setTime] = useState(
+    transaction?.time ? transaction.time : new Date()
+  );
   const [category, setCategory] = useState(transaction?.category || '');
-  const [type, setType] = useState(transaction?.type || '');
-  const [currency, setCurrency] = useState(transaction?.currency || '');
+  const [type, setType] = useState(transaction?.type || 'Despesa');
+  const [currency, setCurrency] = useState(transaction?.currency || 'USD');
   const [currencies, setCurrencies] = useState([]);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showTimePicker, setShowTimePicker] = useState(false);
 
   useEffect(() => {
     const fetchCurrencies = async () => {
@@ -30,6 +43,16 @@ export default function EditTransactionScreen({ route, navigation }) {
 
     fetchCurrencies();
   }, []);
+
+  const onDateChange = (event, selectedDate) => {
+    if (selectedDate) setDate(new Date(selectedDate));
+    setShowDatePicker(false);
+  };
+
+  const onTimeChange = (event, selectedTime) => {
+    if (selectedTime) setTime(new Date(selectedTime));
+    setShowTimePicker(false);
+  };
 
   const handleSubmit = () => {
     if (description && value && date && time && category && type && currency) {
@@ -50,7 +73,7 @@ export default function EditTransactionScreen({ route, navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Editar Transação</Text>
 
       <TextInput
@@ -68,18 +91,50 @@ export default function EditTransactionScreen({ route, navigation }) {
         onChangeText={setValue}
       />
 
-      <TextInput
+      {/* Data */}
+      <TouchableOpacity
         style={styles.input}
-        placeholder='Data (AAAA-MM-DD)'
-        value={date}
-        onChangeText={setDate}
-      />
-      <TextInput
+        onPress={() => setShowDatePicker(true)}
+      >
+        <Text style={styles.inputText}>
+          {date ? date.toLocaleDateString('pt-BR') : 'Selecione uma data'}
+        </Text>
+      </TouchableOpacity>
+
+      {showDatePicker && (
+        <DateTimePicker
+          value={date}
+          mode='date'
+          display='default'
+          onChange={onDateChange}
+        />
+      )}
+
+      {/* Hora */}
+      <TouchableOpacity
         style={styles.input}
-        placeholder='Hora (HH:MM)'
-        value={time}
-        onChangeText={setTime}
-      />
+        onPress={() => setShowTimePicker(true)}
+      >
+        <Text style={styles.inputText}>
+          {time
+            ? time.toLocaleTimeString('pt-BR', {
+                hour: '2-digit',
+                minute: '2-digit',
+              })
+            : 'Selecione uma hora'}
+        </Text>
+      </TouchableOpacity>
+
+      {showTimePicker && (
+        <DateTimePicker
+          value={time}
+          is24Hour
+          mode='time'
+          display='default'
+          onChange={onTimeChange}
+        />
+      )}
+
       <TextInput
         style={styles.input}
         placeholder='Categoria'
@@ -115,7 +170,7 @@ export default function EditTransactionScreen({ route, navigation }) {
         onPress={handleSubmit}
         disabled={!description || !value || !time || !date || !category}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 

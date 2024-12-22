@@ -21,8 +21,8 @@ export default function GalleryScreen() {
 
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
-  const [astro, setAstro] = useState('earth');
   const [progress, setProgress] = useState(0);
+  const [astro, setAstro] = useState('Hubble');
   const [loading, setLoading] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
   const [refreshing, setRefreshing] = useState(false);

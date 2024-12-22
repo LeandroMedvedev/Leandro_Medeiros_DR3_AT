@@ -15,5 +15,5 @@ export function filteredTransactions(searchText, sortProperty, transactions) {
 }
 
 export function truncateText(text, limit) {
-  return text.length > limit ? `${text.substring(0, limit)}...` : text;
+  return text?.length > limit ? `${text.substring(0, limit)}...` : text;
 }
